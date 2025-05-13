@@ -4,7 +4,6 @@ using DbAppTest.model;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using Azure.Identity;
-using Azure.Core;
 
 
 
