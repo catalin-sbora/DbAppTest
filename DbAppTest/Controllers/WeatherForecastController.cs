@@ -58,7 +58,7 @@ namespace DbAppTest.Controllers
 
             // Combine the token with the connection string from the environment variables provided by Service Connector.
             string connectionString =
-                $"{Environment.GetEnvironmentVariable("AZURE_POSTGRESQL_CONNECTIONSTRING")};Password={accessToken.Token}";
+                $"{Environment.GetEnvironmentVariable("AZURE_POSTGRESQL_POSTGRESQL_08124_CONNECTIONSTRING")};Password={accessToken.Token}";
 
             // Establish the connection.
             using (var connection = new NpgsqlConnection(connectionString))
