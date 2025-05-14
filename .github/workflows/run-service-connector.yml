@@ -1,0 +1,32 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Create Service Connector
+
+on:  
+  workflow_dispatch:
+
+jobs:
+    deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
+      contents: read #This is required for actions/checkout
+
+    steps:     
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_13A609D9F62540E3B4A0913C28A7C022 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_09D0064CF770422982C6CD68B0E33070 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B95C10DCFBD14859925E03C62CC79F94 }}
+
+      - name: Run az cli       
+        run: |
+            az extension add --name serviceconnector-passwordless --upgrade
+            az webapp connection create postgres-flexible --connection postgresql_1241c --source-id /subscriptions/${{secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B95C10DCFBD14859925E03C62CC79F94}}/resourceGroups/test-resource-group/providers/Microsoft.Web/sites/test-web-app-tf-001 --target-id /subscriptions/9e1546ee-6ad9-43d2-a969-e9938d29ba8b/resourceGroups/test-resource-group/providers/Microsoft.DBforPostgreSQL/flexibleServers/pg-test-server-002/databases/app_test_db --client-type dotnet --system-identity
+          
