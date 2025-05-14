@@ -8,8 +8,7 @@ on:
 
 jobs:
     deploy:
-      runs-on: ubuntu-latest
-      needs: build
+      runs-on: ubuntu-latest      
       environment:
         name: 'Production'
         url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
