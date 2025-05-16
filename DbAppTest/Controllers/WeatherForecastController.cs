@@ -30,7 +30,7 @@ namespace DbAppTest.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public async Task<IEnumerable<WeatherEntry>> Get()
         {
-           
+         /*  
             // Uncomment the following lines corresponding to the authentication type you want to use.
             // For system-assigned identity.
              var sqlServerTokenProvider = new DefaultAzureCredential();
@@ -66,7 +66,7 @@ namespace DbAppTest.Controllers
                 Console.WriteLine("Opening connection using access token...");
                 connection.Open();
                 Console.WriteLine("DATABASE CONNECTION OPENED");
-            }
+            }*/
             return _context.WeatherEntries.ToList(); 
            
         }
