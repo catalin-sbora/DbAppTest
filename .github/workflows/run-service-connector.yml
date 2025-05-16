@@ -27,5 +27,5 @@ jobs:
         - name: Run az cli       
           run: |
               az extension add --name serviceconnector-passwordless --upgrade
-              az webapp connection create postgres-flexible --connection postgresql_1241c --source-id /subscriptions/${{secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B95C10DCFBD14859925E03C62CC79F94}}/resourceGroups/test-resource-group/providers/Microsoft.Web/sites/test-web-app-tf-001 --target-id /subscriptions/9e1546ee-6ad9-43d2-a969-e9938d29ba8b/resourceGroups/test-resource-group/providers/Microsoft.DBforPostgreSQL/flexibleServers/pg-test-server-002/databases/app_test_db --client-type dotnet --system-identity
+              az webapp connection create postgres-flexible --connection postgresql_3342 --source-id /subscriptions/${{secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B95C10DCFBD14859925E03C62CC79F94}}/resourceGroups/test-resource-group/providers/Microsoft.Web/sites/test-web-app-tf-001 --target-id /subscriptions/9e1546ee-6ad9-43d2-a969-e9938d29ba8b/resourceGroups/test-resource-group/providers/Microsoft.DBforPostgreSQL/flexibleServers/pg-test-server-002/databases/app_test_db --client-type dotnet --system-identity
           
